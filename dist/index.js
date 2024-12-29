@@ -3,7 +3,7 @@ var __createBinding = (this && this.__createBinding) || (Object.create ? (functi
     if (k2 === undefined) k2 = k;
     var desc = Object.getOwnPropertyDescriptor(m, k);
     if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
+        desc = { enumerable: true, get: function() { return m[k]; } };
     }
     Object.defineProperty(o, k2, desc);
 }) : (function(o, m, k, k2) {
@@ -49,17 +49,21 @@ const socket_io_1 = require("socket.io");
 const allfunctions_1 = __importDefault(require("./functions/allfunctions"));
 const serverEvents_1 = require("./serverEvents");
 require("dotenv/config");
+
 const privateKey = fs_1.default.readFileSync("server.key", "utf8");
 const certificate = fs_1.default.readFileSync("server.crt", "utf8");
 const credentials = {
     key: privateKey,
     cert: certificate,
 };
+
 const app = (0, express_1.default)();
 const httpserver = https_1.default.createServer(credentials, app);
 const httserver = http_1.default.createServer(app);
 const io = new socket_io_1.Server(httpserver);
+
 console.log(figlet.textSync("API DE JOGOS GAMIXI TECHNOLOGY"), "\n");
+
 const users = new Map();
 io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Usuário Conectado");
@@ -82,6 +86,7 @@ io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
             });
         }, 10000);
     }));
+
     (0, serverEvents_1.adicionarListener)("attganho", (dados) => __awaiter(void 0, void 0, void 0, function* () {
         users.forEach((valor, chave) => __awaiter(void 0, void 0, void 0, function* () {
             let newvalue = parseFloat(users.get(socket.id).aw) + dados.aw;
@@ -93,12 +98,12 @@ io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
             aw: users.get(socket.id).aw,
         });
     }));
+
     (0, serverEvents_1.adicionarListener)("att", (dados) => {
         users.forEach((valor, chave) => {
             if (valor.token === dados.token) {
                 return false;
-            }
-            else {
+            } else {
                 users.set(socket.id, {
                     token: dados.token,
                     username: dados.username,
@@ -126,11 +131,13 @@ io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
             });
         }
     });
+
     socket.on("disconnect", (reason) => {
         users.delete(socket.id);
         console.log("Cliente desconectado:", reason);
     });
 }));
+
 app.use((0, cors_1.default)({ credentials: true }));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -150,18 +157,23 @@ app.use(helmet_1.default.contentSecurityPolicy({
         "style-src": ["'self'", "https://cdnjs.cloudflare.com"],
     },
 }));
+
 // Middleware para adicionar o socket.io em cada requisição
 app.use((req, res, next) => {
     req.io = io; // Adiciona o socket.io ao objeto req
     next();
 });
+
 app.use("/status", (req, res) => {
     res.json({ status: "operational" });
 });
+
 app.use(routes_1.default);
+
 httpserver.listen(443, () => {
     index_1.default.info("GAMIXI TECHNOLOGY is running on port 443");
 });
+
 httserver.listen(process.env.PORT, () => {
     index_1.default.info(`GAMIXI TECHNOLOGY is running on port ${process.env.PORT}`);
 });
