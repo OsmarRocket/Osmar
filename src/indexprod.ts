@@ -24,10 +24,10 @@ const app = express()
 const httpServer = http.createServer(app)
 const io = new Server(httpServer)
 
-console.log(figlet.textSync("API DE JOGOS JOHN"), "\n")
+console.log(figlet.textSync("API DE JOGOS GAMIXI TECHNOLOGY"), "\n")
 
 // httpServer.listen(process.env.PORT, () => {
-//   logger.info("SERVIDOR INICIADO JOHN " + process.env.PORT)
+//   logger.info("SERVIDOR INICIADO GAMIXI TECHNOLOGY " + process.env.PORT)
 
 // })
 declare module "express-serve-static-core" {
@@ -148,5 +148,5 @@ app.use("/status", (req, res) => {
 })
 app.use(routes)
 httpServer.listen(process.env.PORT, () => {
-   logger.info("SERVIDOR INICIADO API JOHN " + process.env.PORT)
+   logger.info("SERVIDOR INICIADO GAMIXI TECHNOLOGY " + process.env.PORT)
 })
