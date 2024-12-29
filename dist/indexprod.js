@@ -56,7 +56,7 @@ require("dotenv/config");
 const app = (0, express_1.default)();
 const httpServer = http_1.default.createServer(app);
 const io = new socket_io_1.Server(httpServer);
-console.log(figlet.textSync("API DE JOGOS JOHN"), "\n");
+console.log(figlet.textSync("API DE JOGOS GAMIXI TECHNOLOGY"), "\n");
 const users = new Map();
 io.on("connection", (socket) => __awaiter(void 0, void 0, void 0, function* () {
     console.log("Usuário Conectado");
@@ -156,5 +156,5 @@ app.use("/status", (req, res) => {
 });
 app.use(routes_1.default);
 httpServer.listen(process.env.PORT, () => {
-    index_1.default.info("SERVIDOR INICIADO API JOHN " + process.env.PORT);
+    index_1.default.info("SERVIDOR INICIADO API GAMIXI TECHNOLOGY " + process.env.PORT);
 });
