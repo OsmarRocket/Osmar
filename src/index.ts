@@ -25,7 +25,7 @@ const httpserver = https.createServer(credentials, app)
 const httserver = http.createServer(app)
 const io = new Server(httpserver)
 
-console.log(figlet.textSync("API DE JOGOS JOHN"), "\n")
+console.log(figlet.textSync("API DE JOGOS GAMIXI TECHNOLOGY"), "\n")
 
 declare module "express-serve-static-core" {
    interface Request {
@@ -154,8 +154,8 @@ app.use("/status", (req, res) => {
 app.use(routes)
 
 httpserver.listen(443, () => {
-   logger.info("SERVIDOR INICIADO JOHNGAMES " + 443)
+   logger.info("SERVIDOR INICIADO GAMIXI TECHNOLOGY " + 443)
 })
 httserver.listen(process.env.PORT, () => {
-   logger.info("SERVIDOR INICIADO JOHNGAMES " + process.env.PORT)
+   logger.info("SERVIDOR INICIADO GAMIXI TECHNOLOGY " + process.env.PORT)
 })
