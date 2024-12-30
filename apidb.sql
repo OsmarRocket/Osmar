@@ -1,11 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost:3306
--- Tempo de geração: 04/05/2024 às 18:10
--- Versão do servidor: 11.3.2-MariaDB-log
--- Versão do PHP: 8.2.17
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +11,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `apidb`
+-- Banco de dados: `pgsoft`
 --
 
 -- --------------------------------------------------------
@@ -123,7 +116,7 @@ CREATE TABLE `fortunedragonplayerjson` (
 
 CREATE TABLE `fortunemouseplayerjson` (
   `id` int(11) NOT NULL,
-  `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_binFAULT 
+  `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin 
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
@@ -135,7 +128,7 @@ CREATE TABLE `fortunemouseplayerjson` (
 CREATE TABLE `fortuneoxrplayerjson` (
   `id` int(11) NOT NULL,
   `json` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin 
-
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 -- --------------------------------------------------------
 
 --
